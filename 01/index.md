@@ -64,13 +64,26 @@ We begin by importing the `FastAPI` class from the `fastapi` package. This helps
 
 on a URL such as `/`. 
 
-We create a function called `index` that will handle a request for the `/` URL. This returns a JSON message of `Hello World`.
+We create a function cAnother step we shall make is to add our dependencies to a `requirements.txt` file so that we keep track of the versions of our packages. Do that with:
+```
+(env)$ pip freeze > requirements.txt
+```
+
+This is going to update our folder structure to alled `index` that will handle a request for the `/` URL. This returns a JSON message of `Hello World`.
 
 Now let us run our application. To run it, we shall install `uvicorn` which is an ASGI server that will help our application to run asynchronously.
 
 In your command prompt ot terminal, type the following command
+
 ```
 (env)$ pip install uvicorn
 ```
 
-Another step we shall make is to add our dependencies to a `requirements.txt` file so that we keep track of the versions of our packages.
+Another step we shall make is to add our dependencies to a `requirements.txt` file so that we keep track of the versions of our packages. Do that with:
+
+
+```
+(env)$ pip freeze > requirements.txt
+```
+
+This is going to update our folder structure to 
