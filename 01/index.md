@@ -48,23 +48,26 @@ app = FastAPI()
 
 @app.get("/")
 def index():
-    return {"message": "Hello World"}
+    return {"message": "Helo World"}
 ```
 
 This code alone has helped us to build our first FastAPI application. What has happened?
 
 ### What has happened?
+
 We begin by importing the `FastAPI` class from the `fastapi` package. This helps us to create the main instance of our application. This instance allows us to create URLs which lead to different parts of our application.
 
-`@app.get('/')` describes which HTTP method we shall use while accessing the `/` URL of our application. For this case, we are calling the `GET` HTTP method. This means that we can as well call other HTTP methods like 
-- `POST` with  `@app.post` 
-- `PUT` with  `@app.put`
-- `PATCH` with  `@app.patch`
-- `DELETE` with  `@app.delete`
+`@app.get('/')` describes which HTTP method we shall use while accessing the `/` URL of our application. For this case, we are calling the `GET` HTTP method. This means that we can as well call other HTTP methods like
 
-on a URL such as `/`. 
+- `POST` with `@app.post`
+- `PUT` with `@app.put`
+- `PATCH` with `@app.patch`
+- `DELETE` with `@app.delete`
+
+on a URL such as `/`.
 
 We create a function cAnother step we shall make is to add our dependencies to a `requirements.txt` file so that we keep track of the versions of our packages. Do that with:
+
 ```
 (env)$ pip freeze > requirements.txt
 ```
@@ -81,9 +84,54 @@ In your command prompt ot terminal, type the following command
 
 Another step we shall make is to add our dependencies to a `requirements.txt` file so that we keep track of the versions of our packages. Do that with:
 
-
 ```
 (env)$ pip freeze > requirements.txt
 ```
 
-This is going to update our folder structure to 
+This is going to update our folder structure to
+
+```
+├── env
+├── main.py
+└── requirements.txt
+```
+
+Finally, run the server with `uvicorn`.
+
+```
+uvicorn main:app --reload
+```
+
+### What's happening?
+
+We run the application with uvicorn in our terminal, uvicorn runs the server in the following way.
+
+```
+uvicorn <name of module with app instance>:<app instance>
+```
+
+In this case, our app module is `main.py` which we specify as `main` and our app instance is `app`. Passing the `--reload` option helps us to restart the server when we make changes to the code during development. Running the above command will help start our development server and we shall see this output in the terminal.
+
+```
+(env)$ uvicorn main:app
+INFO:     Will watch for changes in these directories: ['/home/jod35/coding/Building_web_Applications_with_FastAPI/src']
+INFO:     Uvicorn running on http://127.0.0.1:8000 (Press CTRL+C to quit)
+INFO:     Started reloader process [10411] using statreload
+INFO:     Started server process [10413]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+```
+
+Alright, so now the server is running and we can see the output when we make a request to `http://127.0.0.1:8000`. We can also notice that uvicorn will listen for changes in our code. So visit the URL and you will see the following ouput.
+
+![Browser Image](../images/browser.png)
+
+Congragulations!!! 🎉 you have been able to create and run your first FastAPI application.
+
+In this post, you have got a very simple introduction to FastAPI. you have learned the following.
+
+1. Creating a virtual evironment and using it to manage your project dependencies
+2. Create a FastAPI app
+3. Run a FastAPI app
+
+Thanks for reading, in the text tutorial you learn more about FastAPI.
