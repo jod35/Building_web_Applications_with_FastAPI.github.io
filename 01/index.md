@@ -2,9 +2,11 @@
 
 ## What is FastAPI?
 
-FastAPI is a web framework written in Python that is specifc to building web APIs. FastAPI gives a very easy to develop REST as well as GraphQL APIs.In this module I introduce FastAPI and we look at what you need to know to get started. FastAPI allows you to use features of modern Python features to build web APIs.
+FastAPI is a web framework written in Python that is specifc to building web APIs. FastAPI gives a very easy to develop REST as well as GraphQL APIs.In this module I introduce FastAPI and we look at what you need to know to get started. FastAPI allows you to use features of modern Python features to build web APIs.    
 
-To build a FastAPI application you will start by creating a virtual environment with
+
+To build a FastAPI application you will start by creating a virtual environment with  
+
 
 ```
 $ python3 -m venv env
@@ -37,7 +39,8 @@ At this point, shall have the following folder structure
 └── main.py
 ```
 
-`main.py` will be our main application file. Ok, let us build our first FastAPI application. In main.py, go ahead and add the following code.
+`main.py` will be our main application file. Ok, let us build our first FastAPI application. In main.py, go ahead and add the following code.  
+
 
 ```
 from fastapi import FastAPI
@@ -51,7 +54,8 @@ def index():
     return {"message": "Helo World"}
 ```
 
-This code alone has helped us to build our first FastAPI application. What has happened?
+This code alone has helped us to build our first FastAPI application.  
+
 
 ### What has happened?
 
@@ -66,21 +70,17 @@ We begin by importing the `FastAPI` class from the `fastapi` package. This helps
 
 on a URL such as `/`.
 
-We create a function cAnother step we shall make is to add our dependencies to a `requirements.txt` file so that we keep track of the versions of our packages. Do that with:
 
-```
-(env)$ pip freeze > requirements.txt
-```
+We created a function called `index` that will handle a request for the `/` URL. This returns a JSON message of `Helo World`.  
 
-This is going to update our folder structure to alled `index` that will handle a request for the `/` URL. This returns a JSON message of `Hello World`.
 
-Now let us run our application. To run it, we shall install `uvicorn` which is an ASGI server that will help our application to run asynchronously.
+Now let us run our application. To run it, we shall install `uvicorn` which is an ASGI server that will help our application to run asynchronously. In your command prompt or terminal, type the following command  
 
-In your command prompt ot terminal, type the following command
 
 ```
 (env)$ pip install uvicorn
-```
+```  
+
 
 Another step we shall make is to add our dependencies to a `requirements.txt` file so that we keep track of the versions of our packages. Do that with:
 
@@ -122,13 +122,16 @@ INFO:     Waiting for application startup.
 INFO:     Application startup complete.
 ```
 
-Alright, so now the server is running and we can see the output when we make a request to `http://127.0.0.1:8000`. We can also notice that uvicorn will listen for changes in our code. So visit the URL and you will see the following ouput.
+Alright, so now the server is running and we can see the output when we make a request to `http://127.0.0.1:8000`. We can also notice that uvicorn will listen for changes in our code. So visit the URL and you will see the following ouput.  
 
-![Browser Image](../images/browser.png)
+
+![Browser Image](../images/browser.png)  
+
 
 Congragulations!!! 🎉 you have been able to create and run your first FastAPI application.
 
-In this post, you have got a very simple introduction to FastAPI. you have learned the following.
+In this post, you have got a very simple introduction to FastAPI. you have learned the following.  
+
 
 1. Creating a virtual evironment and using it to manage your project dependencies
 2. Create a FastAPI app
