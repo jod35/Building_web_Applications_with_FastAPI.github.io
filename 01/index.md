@@ -53,4 +53,24 @@ def index():
 
 This code alone has helped us to build our first FastAPI application. What has happened?
 
-We begun by importing the FastAPI class
+### What has happened?
+We begin by importing the `FastAPI` class from the `fastapi` package. This helps us to create the main instance of our application. This instance allows us to create URLs which lead to different parts of our application.
+
+`@app.get('/')` describes which HTTP method we shall use while accessing the `/` URL of our application. For this case, we are calling the `GET` HTTP method. This means that we can as well call other HTTP methods like 
+- `POST` with  `@app.post` 
+- `PUT` with  `@app.put`
+- `PATCH` with  `@app.patch`
+- `DELETE` with  `@app.delete`
+
+on a URL such as `/`. 
+
+We create a function called `index` that will handle a request for the `/` URL. This returns a JSON message of `Hello World`.
+
+Now let us run our application. To run it, we shall install `uvicorn` which is an ASGI server that will help our application to run asynchronously.
+
+In your command prompt ot terminal, type the following command
+```
+(env)$ pip install uvicorn
+```
+
+Another step we shall make is to add our dependencies to a `requirements.txt` file so that we keep track of the versions of our packages.
