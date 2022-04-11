@@ -26,4 +26,4 @@ In this course, I will be walking you through everything you will need to build 
 
 ## Course Outline
 
-- [Intro](01/Intro.md)
+- [Intro](01/index.md)
