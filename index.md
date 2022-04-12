@@ -9,11 +9,7 @@ layout: default
 # FastAPI Course from Beginner to Advanced
 
 Hey guys, This is code for a full course on the FastAPI framework. I cover all topics from beginner topics to advanced topics on the Framework.
-1. My name is Ssali Jonathan
-2. I am a Ugandan 🇺🇬
-3. I am a software engineer 
-4. I love teaching programming and teaching it
-5. I currently host a [Youtube channel](https://www.youtube.com/channel/UC4AYRvDw3yh-ChonxxW6VLA)  where I teach programming 
+
 ## A little bit about me
 
 <p align="center">
