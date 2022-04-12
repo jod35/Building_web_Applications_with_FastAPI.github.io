@@ -17,7 +17,7 @@ def greet_name(name:str):
 
 
 @app.get("/greet")
-def greet_otional_name(name:Optional[str]="World"):
+def greet_optional_name(name:Optional[str]="World"):
 
     return {"message": f"Helo {name}"}
 
