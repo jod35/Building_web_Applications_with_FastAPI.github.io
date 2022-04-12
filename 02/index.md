@@ -1,5 +1,7 @@
 # 02 Requests
-In the previous example, we created our first FastAPI application. We also went ahead and ran it with `uvicorn`. In this post, we are going to look at how requests are made and how a response is returned.  
+Through requests, users can interact with an API as they can send data and also receive data from an API.  
+
+In the previous example, we created our first FastAPI application. We also went ahead and ran it with `uvicorn`. Now we are going to look at how requests are made and how a response is returned.  
 
 Each time we create a route like below, we create a function that handles a request to a given URL, this function is invoked when we visit a URL.
 
@@ -11,7 +13,7 @@ def index():
 ```  
 In this example, we are making a request to the `/` URL and are getting a JSON response of `{"message": "Helo World"}`.  
 
-The route decorator specified includes an HTTP method that is used when making a request. In our example, this is the `GET` request. Now let us create more routes by adding this code.
+The `@app` decorator above includes an HTTP method that is used when making a request. In our example, this is the `GET` request. Now let us create more routes by adding this code.
 
 ```python
 @app.get('/{name}')
@@ -25,13 +27,13 @@ def greet_optional_name(name:Optional[str]="World"):
 
     return {"message": f"Helo {name}"}
 ```  
-We have created two URLs one is `/{name}` and this takes in a path parameter. The second one is `/greet` and this should take in an optional query parameter `name` that defaults to `"World"`.  
+We have created two URLs one is `/{name}` and this takes in a [path parameters](https://fastapi.tiangolo.com/tutorial/path-params). The second one is `/greet` and this should take in an optional [query parameter](https://fastapi.tiangolo.com/tutorial/query-params) `name` that defaults to `"World"`.  
 
 
 ### Let us change something.
 For the previous examples, we have been using our web Browser to make requests to our URLs. We are going to change to [Insomnia](https://insomnia.rest/). This is an open-source API client that allow us to easily and quickly send [REST](https://en.wikipedia.org/wiki/Representational_state_transfer), [GraphQL](https://en.wikipedia.org/wiki/GraphQL), [SOAP](https://en.wikipedia.org/wiki/SOAP) and [GRPC](https://en.wikipedia.org/wiki/GRPC) requests.  
 
-I know that has been a lot. But basically `Insomnia` will really help us to make requests to our REST API easily.  
+I know that has been a lot 😅. But basically `Insomnia` will really help us to make requests to our REST API easily.  
 
 ### Steps to Use Insomnia
 1. Download one for your operating system [here](https://insomnia.rest/download) and Install it.  
@@ -56,10 +58,18 @@ I know that has been a lot. But basically `Insomnia` will really help us to make
 
 
 ### Note
-I will be using Insomnia in this course, please feel free to use other API clients. Ok, so let use try accessing the other URLS on our API at this point. 
+I will be using Insomnia in this course, please feel free to use other API clients. Ok, so let use try accessing the URLS we have created on our API. 
 
 ## Path Parameters
 We shall begin with the `/{name}` endpoint which is going to take in a path parameter.  
+
+Path parameters are variables we pass in our URL so that we can be able to perform a certain task.  
+```python
+@app.get('/{name}')
+def greet_name(name:str):
+    
+    return {"name":f"Hello {name}"}
+```
 
 
 ![Path parameters](../images/path%20parameters.png)  
