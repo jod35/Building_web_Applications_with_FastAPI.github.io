@@ -3,7 +3,7 @@ title: FastAPI Course
 permalink: /
 layout: default
 ---
-long
+
 ![FastAPI Logo](https://fastapi.tiangolo.com/img/logo-margin/logo-teal.png)
 
 # FastAPI Course from Beginner to Advanced
@@ -23,7 +23,7 @@ Hey guys, This is code for a full course on the FastAPI framework. I cover all t
 5. I currently host a [Youtube channel](https://www.youtube.com/channel/UC4AYRvDw3yh-ChonxxW6VLA)  where I teach programming 
 In this course, I will be walking you through everything you will need to build web applications with FastAPI and the Python programming language.
 
-## Course Outlinelong
+## Course Outline
 
 1. [Intro](01/index.md)
 2. [Requests](02/index.md)
