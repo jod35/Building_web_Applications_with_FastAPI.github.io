@@ -42,7 +42,7 @@ At this point, shall have the following folder structure
 `main.py` will be our main application file. Ok, let us build our first FastAPI application. In main.py, go ahead and add the following code.  
 
 
-```
+```python
 from fastapi import FastAPI
 
 

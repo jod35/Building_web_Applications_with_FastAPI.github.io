@@ -13,7 +13,7 @@ In this example, we are making a request to the `/` URL and are getting a JSON r
 
 The route decorator specified includes an HTTP method that is used when making a request. In our example, this is the `GET` request. Now let us create more routes by adding this code.
 
-```
+```python
 @app.get('/{name}')
 def greet_name(name:str):
     
