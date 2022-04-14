@@ -10,14 +10,14 @@ def index():
     return {"message": "Hello World"}
 
 
-@app.get('/{name}')
+@app.get('/greet/{name}')
 def greet_name(name:str):
     
     return {"name":f"Hello {name}"}
 
 
-@app.get("/greet")
+@app.get("/hey")
 def greet_optional_name(name:Optional[str]="World"):
 
-    return {"message": f"Helo {name}"}
+    return {"message": f"Hey {name}"}
 

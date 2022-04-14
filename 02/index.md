@@ -16,18 +16,18 @@ In this example, we are making a request to the `/` URL and are getting a JSON r
 The `@app` decorator above includes an HTTP method that is used when making a request. In our example, this is the `GET` request. Now let us create more routes by adding this code.
 
 ```python
-@app.get('/{name}')
+@app.get('/greet/{name}')
 def greet_name(name:str):
     
     return {"name":f"Hello {name}"}
 
 
-@app.get("/greet")
+@app.get("/hey")
 def greet_optional_name(name:Optional[str]="World"):
 
-    return {"message": f"Helo {name}"}
+    return {"message": f"Hey {name}"}
 ```  
-We have created two URLs one is `/{name}` and this takes in a [path parameters](https://fastapi.tiangolo.com/tutorial/path-params). The second one is `/greet` and this should take in an optional [query parameter](https://fastapi.tiangolo.com/tutorial/query-params) `name` that defaults to `"World"`.  
+We have created two URLs one is `/greet/{name}` and this takes in a [path parameter](https://fastapi.tiangolo.com/tutorial/path-params).  The second one is `/hey` and this should take in an optional [query parameter](https://fastapi.tiangolo.com/tutorial/query-params) `name` that defaults to `"World"`.  
 
 
 ### Let us change something.
@@ -45,14 +45,11 @@ I know that has been a lot 😅. But basically `Insomnia` will really help us to
 3. Create a request collection  
 
 ![request collection](../images/request-collection.png)  
-
 4. Give the collection a name  
 
-![request collection name](../images/request-name.png)
-
+![request collection name](../images/request-name.png)  
 5. Then you will go to this UI  
-![request home](../images/request-home.png)
-
+![request home](../images/request-home.png)  
 6. Create a request and make a request  
 ![create a request](../images/make%20a%20request.png)  
 
@@ -61,22 +58,22 @@ I know that has been a lot 😅. But basically `Insomnia` will really help us to
 I will be using Insomnia in this course, please feel free to use other API clients. Ok, so let use try accessing the URLS we have created on our API. 
 
 ## Path Parameters
-We shall begin with the `/{name}` endpoint which is going to take in a path parameter.  
+We shall begin with the `/greet/{name}` endpoint which is going to take in a path parameter.  
 
 Path parameters are variables we pass in our URL so that we can be able to perform a certain task.  
 ```python
-@app.get('/{name}')
+@app.get('/greet/{name}')
 def greet_name(name:str):
     
     return {"name":f"Hello {name}"}
 ```
 
 
-![Path parameters](../images/path%20parameters.png)  
+![Path parameters](../images/path.png)  
 
-In this example we have passed a name `jona` within our URL and then made a `GET` request to the `/{name}` endpoint. This allows us to return the JSON response of `{"name": "Hello jona"}`.
+In this example we have passed a name `"name"` within our URL and then made a `GET` request to the `/greet/{name}` URL. This allows us to return the JSON response of `{"name": "Hello name"}`.
 
-Our path parameter is the name `"jona"` which is a string. This name is taken in by our request handler function that will return response as we see above. Our function takes in the `name` which is a string and in this case we are using type hints to specify that we shall have our name as a function.  
+Our path parameter is the name `"name"` which is a string. This name is taken in by our request handler function that will return response as we see above. Our function takes in the `name` which is a string and in this case we are using type hints to specify that we shall have our name as a function.  
 ```python
 def greet_name(name:str):
     
@@ -86,7 +83,51 @@ def greet_name(name:str):
 
 FastAPI heavily relies on type hints to determine what request handlers take and also to validate the data that we pass to our API as we shall see later when sending  `POST` and `PUT` requests.  
 
+Now let use try to make this same request with an integer as the path parameter.  
+
+
+
 ## Query parameters
-Now let us make a request to our `/greet` URL and see what happens.
+Now let us make a request to our `/hey` URL and see what happens. 
+![request Image](../images/query.png)  
+When we make a `GET` request, we get our response as 
+```json
+{
+	"message": "Hey World"
+}
+```  
+This is happening because we set our optional `name` query parameter which is by default `"World"`. This is why we see our output as above. Now let us change our request.  
+
+![request image](../images/query1.png)  
+
+Here we have provided an optional query parameter `name` as `"jona"` and that gives the following JSON output.  
+```json
+{
+	"message": "Hey jona"
+}
+```  
+
+Query parameters provide a good way to pass dynamic variables in our URLs.They are usually found at the very ends of URLs like `"blablabla.com/?name=jona&age=12"` They are useful in pagination, filtering, sorting order and so on. In our example, we are providing `name` as our query parameter. Changing it will return the greeting with the value provided.  
+
+![query params](../images/query2.png)  
+
+Back to our code. Our request handler function accepts the optional query paramater `name` as a parameter as shown below.  
+```python
+def greet_optional_name(name:Optional[str]="World"):
+
+    return {"message": f"Hey {name}"}
+```  
+
+### What's Happening?
+In the code example above, we are using an optional query parameter `name` that is set to a default of `"World"`. We are using the `typing` module in the Python standard library to help us to to provide our name as an optional string with a value. This is imported like so.  
+
+```python
+from typing import Optional
+```
+
+
+
+
+
 
 

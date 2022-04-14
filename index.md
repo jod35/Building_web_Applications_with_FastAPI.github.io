@@ -25,6 +25,6 @@ In this course, I will be walking you through everything you will need to build 
 
 ## Course Outline
 
-1. [Intro](01/index.md)
-2. [Requests](02/index.md)
+1. [Intro to FastAPI](01/index.md)
+2. [Making Requests ](02/index.md)
 
