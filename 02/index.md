@@ -87,6 +87,26 @@ def greet_name(name:str):
 
 ```
 
+## Advanced Path Parameter Validation
+
+In case we need some advanced validation of our path parameters, we use the `Path` function from FastAPI to allow us do this. Go ahead and make these adjustments to the `greet_optional_name` function.
+
+```python
+
+from fastapi import Path
+
+@app.get('/greet/{name}')
+def greet_name(name:str=Path(default="World", max_length=6)):
+
+    return {"name":f"Hello {name}"}
+```
+
+Here we, use the `Path` function to give path parameter of `name` a `default` of `"World"` as well as a `max_length` of 6 characters. This works the same as for our previous path parameter example. However, we have some nice validations taking place. For example, when we try to make a request to the `/greet/{name}` URL, with a name longer than 6 characters,
+
+![path parameter validation](../images/path%20param%20validation.png)
+
+We now see that an error with status code of 422 (Unprocessable Entity) has been shown to us. We have to provide a `name` that passes our validations.
+
 FastAPI heavily relies on type hints to determine what request handlers take and also to validate the data that we pass to our API as we shall see later when sending `POST` and `PUT` requests.
 
 Now let use try to make this same request with an integer as the path parameter.
@@ -140,6 +160,8 @@ from typing import Optional
 In case we need some advanced validation of our query parameters, we use the `Query` function from FastAPI to allow us do this. Go ahead and make these adjustments to the `greet_optional_name` function.
 
 ```python
+from fastapi import Query
+
 @app.get("/hey")
 def greet_optional_name(name:str=Query(default="World",max_length=40)):
 
@@ -153,6 +175,9 @@ Here we, use the `Query` function to give our optional query parameter of `name`
 In REST APIs, The body of a request is the way through which documents, files and other kinds of data are sent to the server. This information is usually encoded as JSON and is used to create data in databases. When retrieving data from the request body with FastAPI, we work in a way that is very similar to query parameters. What defers is that we need to use the `Body` function to allow us validate our data. Add the following lines to our `main.py`.
 
 ```python
+
+from fastapi import Body
+
 @app.post("/users")
 def create_a_user(username: str = Body(...), email: str = Body(...)):
     return {"username": username, "email": email}

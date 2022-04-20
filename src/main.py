@@ -1,4 +1,4 @@
-from fastapi import FastAPI, Query, Body
+from fastapi import FastAPI, Query, Body, Path
 from typing import Optional
 
 
@@ -11,7 +11,7 @@ def index():
 
 
 @app.get("/greet/{name}")
-def greet_name(name: str):
+def greet_name(name: str = Path(default="World", max_length=6)):
 
     return {"name": f"Hello {name}"}
 
