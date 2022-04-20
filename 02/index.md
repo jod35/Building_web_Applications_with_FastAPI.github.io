@@ -202,5 +202,3 @@ This will return our JSON data containing our `username` as well as our `email` 
 ### Note
 
 Using the above method, we can get data from our request body. The drawback to using that method is we make our request handler functions really verbose. FastAPI provides a more efficient way of carrying out such validations using pydantic.
-
-## Creating Pydantic Schemas
