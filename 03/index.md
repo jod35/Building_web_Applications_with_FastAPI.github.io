@@ -28,7 +28,7 @@ We have created a class of `User` which inherits from `BaseModel`. This is our p
 - We also have a `username` field which is of type `str`
 - We also have an `email` field which is of type `str`  
 
-All of the fields defined on our model are required and have the `str` type. Now let us create a user  
+All of the fields defined on our model are required and have the `str` type. Now let us create a user. 
 ```python
 
 from pydantic import BaseModel
@@ -51,7 +51,7 @@ new_user=User(**user_data)
 print(new_user)
 ```  
 
-This will give us the result of 
+When we run `schemas.py`, this will give us the string representation of the `User` object as shown below. 
 ```
 id=1 username='username123' email='username@email.com'
 ```
