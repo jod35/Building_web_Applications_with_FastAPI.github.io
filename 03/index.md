@@ -10,18 +10,48 @@ In the previous post, we looked at how we could require to provide the request b
 
 Using Pydantic, we can primarily describe our data as `models`. These models are so similar to types in languages like Java, C# and TypeScript. Using these models, we can pass untrusted data and pydantic will parse as well as validate the data to check if the fields the data has conform to the fields defined on our models.
 
-Let us create our first pydantic model. If you installed `fastapi`, you already installed pydantc. So let's us create a file called `schemas.py` where we shall create our models. A model in Pydantic is created by inheriting from the `Base` class. Let us create a simple model like this.
+Let us create our first pydantic model. If you installed `fastapi`, you already installed pydantc. So let's us create a file called `schemas.py` where we shall create our models. A model in Pydantic is created by inheriting from the `BaseModel` class. Let us create a simple model like this.
 
 ```python
 from pydantic import BaseModel
-import uuid
-
-def create_id():
-    return uuid.uuid4()
 
 
 class User(BaseModel):
-    id: str = str(create_id())
+    id: str 
     username: str
     email: str
+```  
+We have created a class of `User` which inherits from `BaseModel`. This is our pydantic model which defines our fields using type annotations.  
+
+### What's really happening here?
+- We are creating a field of `id` which is of type `str`. The type-only annotation means that this field is required. 
+- We also have a `username` field which is of type `str`
+- We also have an `email` field which is of type `str`  
+
+All of the fields defined on our model are required and have the `str` type. Now let us create a user  
+```python
+
+from pydantic import BaseModel
+
+
+class User(BaseModel):
+    id:int
+    username:str
+    email:str
+
+
+user_data={
+    "id":1,
+    "username":"username123",
+    "email":"username@email.com"
+}
+
+new_user=User(**user_data)
+
+print(new_user)
+```  
+
+This will give us the result of 
+```
+id=1 username='username123' email='username@email.com'
 ```
