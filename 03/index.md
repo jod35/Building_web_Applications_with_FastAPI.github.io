@@ -54,4 +54,57 @@ print(new_user)
 When we run `schemas.py`, this will give us the string representation of the `User` object as shown below. 
 ```
 id=1 username='username123' email='username@email.com'
+```  
+We can also do things like printing the user as a dictionary.  
+```python
+print(new_user.dict())
+```  
+This will give us the data of user as a Python dictionary. Printing the user as JSON will be.  
+```python
+print(new_user.json())
+```  
+
+If we want to find out about the `User` schema, we then have to add the following code.  
+```python
+print(new_user.schema())
+```  
+This will give the output below which is untidy.  
 ```
+{"title": "User", "type": "object", "properties": {"id": {"title": "Id", "type": "integer"}, "username": {"title": "Username", "type": "string"}, "email": {"title": "Email", "type": "string"}}, "required": ["id", "username", "email"]}
+```  
+Let us the `json` Python module to help us to organize this schema with some indentation. So let us do this with  
+```python
+import json
+
+dict_schema=new_user.schema()
+
+print(json.dump(dict_schema,indent=4))
+
+```
+This gives us the following output.  
+```
+{
+    "title": "User",
+    "type": "object",
+    "properties": {
+        "id": {
+            "title": "Id",
+            "type": "integer"
+        },
+        "username": {
+            "title": "Username",
+            "type": "string"
+        },
+        "email": {
+            "title": "Email",
+            "type": "string"
+        }
+    },
+    "required": [
+        "id",
+        "username",
+        "email"
+    ]
+}
+```
+
