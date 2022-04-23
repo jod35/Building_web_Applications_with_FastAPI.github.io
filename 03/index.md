@@ -82,7 +82,7 @@ print(json.dump(dict_schema,indent=4))
 
 ```
 This gives us the following output.  
-```
+```json
 {
     "title": "User",
     "type": "object",
