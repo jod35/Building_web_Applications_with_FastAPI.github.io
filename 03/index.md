@@ -107,5 +107,6 @@ This gives us the following output.
     ]
 }
 ```  
-From the above schema, we see that the name of the schema is `User` and the type is `object`. Let us look at the properties of these schema. We have the `id` which is an integer, `username` which is a string and `email` which is also a string. The schema also shows us the required fields in our schema and those are all the fields (`id`,`username`,`email`). This gives us a really cool description of our schema.
+From the above schema, we see that the name of the schema is `User` and the type is `object`. Let us look at the properties of these schema. We have the `id` which is an integer, `username` which is a string and `email` which is also a string. The schema also shows us the required fields in our schema and those are all the fields (`id`,`username`,`email`). This gives us a really cool description of our schema.  
 
+This example showed us how we can create our schemas using standard types which include `str`,   `int`, `bool`, `float` and so on. Let us add to our code by using some compound data types on our fields. 
