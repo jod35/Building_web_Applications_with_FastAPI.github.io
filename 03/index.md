@@ -213,6 +213,60 @@ except ValidationError as error:
     print(error)
  
 ```  
-What we are doing here is to check for any validation errors that we may have when validating data using our model. We try to pass our user through the model and if we have any errors, `ValidationError` will return those errors.
+What we are doing here is to check for any validation errors that we may have when validating data using our model. We try to pass our user through the model and if we have any errors, `ValidationError` will return those errors.  
+Let us try validating with bad data. So let us change our data.  
+
+```python
+try:
+    user_data={
+        "id":1,
+        "username":"username123",
+        "email":"username@email.com",
+        "interests":"CODING",
+        "role":"USER"
+    }
+
+    new_user=User(**user_data)
+
+    print(new_user)
+
+except ValidationError as error:
+    print(error)
+```  
+when we run our `schema.py`, we now have the following output. This shows us the errors we have on the fields of `interests` and `role` as shown below.  
+```
+pydantic.error_wrappers.ValidationError: 2 validation errors for User
+interests
+  value is not a valid list (type=type_error.list)
+role
+  value is not a valid enumeration member; permitted: 'Admin', 'Student', 'Teacher' (type=type_error.enum; enum_values=[<Role.ADMIN: 'Admin'>, <Role.STUDENT: 'Student'>, <Role.TEACHER: 'Teacher'>])
+```  
+ 
+We can also print this error in a simple easy JSON format by printing `error.json()`. This will give the following output.  
+```json
+[
+  {
+    "loc": [
+      "interests"
+    ],
+    "msg": "value is not a valid list",
+    "type": "type_error.list"
+  },
+  {
+    "loc": [
+      "role"
+    ],
+    "msg": "value is not a valid enumeration member; permitted: 'Admin', 'Student', 'Teacher'",
+    "type": "type_error.enum",
+    "ctx": {
+      "enum_values": [
+        "Admin",
+        "Student",
+        "Teacher"
+      ]
+    }
+  }
+]
+```
 
 
