@@ -109,4 +109,83 @@ This gives us the following output.
 ```  
 From the above schema, we see that the name of the schema is `User` and the type is `object`. Let us look at the properties of these schema. We have the `id` which is an integer, `username` which is a string and `email` which is also a string. The schema also shows us the required fields in our schema and those are all the fields (`id`,`username`,`email`). This gives us a really cool description of our schema.  
 
-This example showed us how we can create our schemas using standard types which include `str`,   `int`, `bool`, `float` and so on. Let us add to our code by using some compound data types on our fields. 
+This example showed us how we can create our schemas using standard types which include `str`,   `int`, `bool`, `float` and so on. Let us add to our code by using some compound data types on our fields.  
+We shall begin by adding a list of `interests` to our `User`. To this, we are going to use a compound data type of `List` that is provided to us by the typing module from the Python standard library.  
+```python
+
+from pydantic import BaseModel
+from typing import List
+
+class User(BaseModel):
+    id:int
+    username:str
+    email:str
+    interests:List[str]=[]
+
+
+user_data={
+    "id":1,
+    "username":"username123",
+    "email":"username@email.com",
+    "interests":["coding","basketball"]
+}
+
+new_user=User(**user_data)
+
+print(new_user)
+
+```  
+If you have noticed, we have added a field of `interests` that is having a value set to an empty list. So when we run the `schema.py` file, we expect to get the following output.  
+```
+id=1 username='username123' email='username@email.com' interests=['coding', 'basketball']
+```  
+Congrats, you have added a list as a field to our Pydantic model. What if we added choices to our model. We are going to make use of enums to achieve this. Now we are going to add a field of `roles` to this model. Let us to update our code by adding the folowing code.  
+```python
+
+from pydantic import BaseModel
+from typing import List
+from enum import Enum
+
+
+
+class Role(str, Enum):
+    ADMIN = "Admin"
+    STUDENT = "Student"
+    TEACHER = "Teacher"
+
+class User(BaseModel):
+    id:int
+    username:str
+    email:str
+    interests:List[str]=[]
+    role:Role
+
+
+user_data={
+    "id":1,
+    "username":"username123",
+    "email":"username@email.com",
+    "interests":["coding","basketballa"],
+    "role":Role.ADMIN
+}
+
+new_user=User(**user_data)
+
+print(new_user)
+```  
+We have created the role class  
+```python
+from enum import Enum
+
+
+
+class Role(str, Enum):
+    ADMIN = "Admin"
+    STUDENT = "Student"
+    TEACHER = "Teacher"
+```  
+This class contains the roles a user should have in our API. There are three choices here, `ADMIN`,`STUDENT` and `TEACHER`. These are created using an `enum`. We then create a field of `role` that has its type as our `Role` class we have defined. Let us see what happens when we run our `schema.py`.  
+```
+id=1 username='username123' email='username@email.com' interests=['coding', 'basketballa'] role=<Role.ADMIN: 'Admin'>
+```
+
