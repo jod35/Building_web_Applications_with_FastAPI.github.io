@@ -188,4 +188,31 @@ This class contains the roles a user should have in our API. There are three cho
 ```
 id=1 username='username123' email='username@email.com' interests=['coding', 'basketballa'] role=<Role.ADMIN: 'Admin'>
 ```
+Our role field has a type that is defned by the `Role` class we have created. In this case our role for the created user is the "ADMIN" role. 
+
+## Validation Errors
+In case we want to see validation errors that may be present when we are validating data using a Pydantic model, we use the `ValidationError` class that allows us to see our errors in a very user-friendly way. Let us try it out. Change the code for validating the user data by adding the following.  
+```python
+# dont forget to import ValidationError
+from pydantic import ValidationError
+
+try:
+    user_data={
+        "id":1,
+        "username":"username123",
+        "email":"username@email.com",
+        "interests":["coding","basketballa"],
+        "role":Role.ADMIN
+    }
+
+    new_user=User(**user_data)
+
+    print(new_user)
+
+except ValidationError as error:
+    print(error)
+ 
+```  
+What we are doing here is to check for any validation errors that we may have when validating data using our model. We try to pass our user through the model and if we have any errors, `ValidationError` will return those errors.
+
 
